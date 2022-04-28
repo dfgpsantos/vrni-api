@@ -10,7 +10,7 @@ cat > user.txt << EOL
   "password": "yourpasswordhere",
   "domain": {
     "domain_type": "LDAP",
-    "value": "vmware.com"
+    "value": "corp.com"
   }
 }
 EOL
