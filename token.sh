@@ -3,7 +3,7 @@
 VRNIUSER='"user@corp.local"'
 DOMAINTYPE='"LDAP"'
 DOMAINVALUE='"corp.local"'
-VRNI=field-demo.vrni.cmbu.local
+VRNI=vrni.corp.local
 QUOTES='"'
 read -s -p "Password: " VRNIPASS
 
