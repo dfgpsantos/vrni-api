@@ -63,11 +63,7 @@ then
 METRIC='"net.ppsTotal.rate.average.number"'
 fi
 
-awk -F '"' '{ print $4 }' token.txt 1> /dev/null
-
-
 TOKEN=`awk -F '"' '{ print $4 }' token.txt`
-#echo $TOKEN
 
 cat > test2.txt << EOL
 {
