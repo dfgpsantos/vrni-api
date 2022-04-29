@@ -1,5 +1,7 @@
 #!/bin/bash
 
+VRNI=vrni.corp.local
+
 #please replace the entity_id with the ones that you want to monitor
 
 echo "Please select the metric you want to monitor"
@@ -65,6 +67,9 @@ fi
 
 TOKEN=`awk -F '"' '{ print $4 }' token.txt`
 
+TODAY=`date +%s`
+YESTERDAY=$(($TODAY-86400))
+
 cat > test2.txt << EOL
 {
   "entity_ids": [
@@ -72,12 +77,12 @@ cat > test2.txt << EOL
   ],
   "metric": $METRIC,
   "interval":300,
-  "start_time":1651073950,
-  "end_time":1651160350
+  "start_time":$YESTERDAY,
+  "end_time":$TODAY
 }
 EOL
 
-curl -s -k -H "Authorization: NetworkInsight $TOKEN" -H "Content-Type: application/json" -H "Accept: application/json" -X POST 'https://field-demo.vrni.cmbu.local/api/ni/metrics/fetch/v2' -d @test2.txt
+curl -s -k -H "Authorization: NetworkInsight $TOKEN" -H "Content-Type: application/json" -H "Accept: application/json" -X POST 'https://$VRNI/api/ni/metrics/fetch/v2' -d @test2.txt
 
 
 rm -rf text2.txt
